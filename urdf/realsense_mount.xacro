@@ -6,13 +6,13 @@
       <visual>
         <geometry>
           <!-- The path to the visual meshes in the package. -->
-          <mesh filename="package://ur5_with_realsesne/meshes/visual/realsense_mount.STL"/>
+          <mesh filename="package://ur5_with_robotiq_gripper_des/meshes/visual/realsense_mount.STL"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
           <!-- The path to the collision meshes in the package. -->
-          <mesh filename="package://ur5_with_realsesne/meshes/collision/realsense_mount.STL"/>
+          <mesh filename="package://ur5_with_robotiq_gripper_des/meshes/collision/realsense_mount.STL"/>
         </geometry>
       </collision>
     </link>

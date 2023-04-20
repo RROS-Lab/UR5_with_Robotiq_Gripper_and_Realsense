@@ -4,7 +4,7 @@
   <!-- ur5 -->
   <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro" />
   <!-- end-effector -->
-  <xacro:include filename="$(find ur5_with_realsesne)/urdf/realsense_mount.xacro" />
+  <xacro:include filename="$(find ur5_with_robotiq_gripper_des)/urdf/realsense_mount.xacro" />
   <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
   <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
   <xacro:robotiq_arg2f_85 prefix="" connected_to="tool0"/>
