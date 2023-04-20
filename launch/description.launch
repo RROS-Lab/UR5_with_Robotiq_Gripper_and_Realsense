@@ -1,0 +1,9 @@
+<launch>
+  <arg name="gui" default="True" />
+  <param name="use_gui" value="$(arg gui)"/>
+  <arg name="robot_namespace" default="/"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ur5_with_robotiq_gripper_des)/urdf/ur5_with_robotiq_gripper.xacro' --inorder use_nominal_extrinsics:=true" />
+
+
+</launch>

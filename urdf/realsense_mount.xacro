@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro"  name="realsense_mount">
+  <!-- Here we define the 2 parameters of the macro -->
+  <xacro:macro name="realsense_mount" params="prefix connected_to">
+    <link name="${prefix}realsense_mount">
+      <visual>
+        <geometry>
+          <!-- The path to the visual meshes in the package. -->
+          <mesh filename="package://ur5_with_realsesne/meshes/visual/realsense_mount.STL"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <!-- The path to the collision meshes in the package. -->
+          <mesh filename="package://ur5_with_realsesne/meshes/collision/realsense_mount.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <!-- Create a fixed joint with a parameterized name. -->
+    <joint name="${prefix}realsense_mount_joint" type="fixed">
+      <!-- The parent link must be read from the robot model it is attached to. -->
+      <parent link="${connected_to}"/>
+      <child link="${prefix}realsense_mount"/>
+      <!-- The tool is directly attached to the flange. -->
+      <origin rpy="0 ${3*pi/2} 0" xyz="0 0 0.008"/>
+    </joint>
+  
+    <!-- Camera_center frame -->
+    <joint name="${prefix}camera_center_joint" type="fixed">
+      <origin xyz="0 0 0.106" rpy="0 0 0"/>
+      <parent link="${prefix}realsense_mount"/>
+      <child link="${prefix}camera_center"/>
+    </joint>
+    <link name="${prefix}camera_center"/>
+
+
+  </xacro:macro>
+</robot>
+

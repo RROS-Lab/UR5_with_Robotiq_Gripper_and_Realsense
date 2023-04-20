@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro" name="ur5_with_vacc_gripper">
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro" />
+  <!-- end-effector -->
+  <xacro:include filename="$(find ur5_with_realsesne)/urdf/realsense_mount.xacro" />
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
+  <xacro:robotiq_arg2f_85 prefix="" connected_to="tool0"/>
+  <xacro:ur5_robot prefix=""/>
+  <xacro:realsense_mount prefix="" connected_to="tool0"/>
+  <xacro:sensor_d415 parent="realsense_mount" use_nominal_extrinsics="true" add_plug="true" use_mesh="true">
+    <origin xyz="-0.004 -0.1265 0.001" rpy="${pi/2} ${pi} ${-pi}"/>
+  </xacro:sensor_d415>
+  <!-- ur5 with real sense mount -->
+  <!-- The ur5 xacro must be included with passing parameters -->
+  
+
+  <xacro:macro name="ur5_with_realsense_mount" params="prefix">
+	  <xacro:ur5_robot prefix=""/>
+	  <!-- end-effector -->
+	  <!-- Here we include the end-effector by setting the parameters -->
+	  <!-- TODO: check end-effector link name of robot -->
+	  <xacro:realsense_mount prefix="" connected_to="tool0"/>
+  </xacro:macro>
+  
+    <xacro:macro name="ur5_with_robotiq" params="prefix">
+	  <xacro:ur5_with_realsense_mount prefix="" />
+	  <!-- end-effector -->
+	  <!-- Here we include the end-effector by setting the parameters -->
+	  <!-- TODO: check end-effector link name of robot -->
+	  <xacro:robotiq_arg2f_85 prefix="" connected_to="tool0"/>
+    </xacro:macro>
+  
+    <xacro:macro name="ur5_with_realsense" params="prefix">
+          <xacro:ur5_with_robotiq prefix="" />
+	  <!-- end-effector -->
+	  <!-- Here we include the end-effector by setting the parameters -->
+	  <!-- TODO: check end-effector link name of robot -->
+	  <xacro:sensor_d415 parent="realsense_mount" use_nominal_extrinsics="true" add_plug="true" use_mesh="true">
+	    <origin xyz="-0.004 -0.1265 0.001" rpy="${pi/2} ${pi} ${-pi}"/>
+	  </xacro:sensor_d415>
+    </xacro:macro>
+
+
+</robot>	
